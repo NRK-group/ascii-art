@@ -1,13 +1,23 @@
 package main
 
 import (
-	"asciiart/asciiart"
+	"asciiart/banner"
 	"fmt"
+	"os"
 )
 
+func MainFormatError() string {
+	return "Usage: go run . [STRING]\n\nEX: go run . something\n"
+}
+
+func AsciiArtMain() string {
+	if len(os.Args[1:]) == 1 {
+		return banner.PrintAsciiArt(os.Args[1], banner.Standard)
+	} else {
+		return MainFormatError()
+	}
+}
+
 func main() {
-	/*
-		main program
-	*/
-	fmt.Print(asciiart.AsciiArtMain())
+	fmt.Print(AsciiArtMain())
 }
